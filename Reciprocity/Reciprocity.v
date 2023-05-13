@@ -1065,9 +1065,10 @@ Let P6 :
   mlt P (product Z mlt mlt_comm mlt_assoc 1 _ R_finite (fun u => (-1) ^ (r u))) =
   mlt P (product Z mlt mlt_comm mlt_assoc 1 _ R_finite (fun u => q)).
 Proof.
-  assert (mlt P ((product Z mlt mlt_comm mlt_assoc 1 _ R_finite (fun u => (-1) ^ (r u)))) =
+  pose proof P5 as H.
+  (* assert (mlt P ((product Z mlt mlt_comm mlt_assoc 1 _ R_finite (fun u => (-1) ^ (r u)))) =
     mlt (product Z mlt mlt_comm mlt_assoc 1 _ R_finite r) 1).
-  apply P5.
+  apply P5. *)
   rewrite P1 in H. rewrite <- (mod_1_mod p) in H. rewrite H. apply mlt_comm.
 Qed.
 Let P7 :
@@ -1124,6 +1125,7 @@ Proof.
   intros. unfold mlt. unfold ZpZmult. rewrite <- Zmult_mod. f_equal. apply m1_pow_morphism.
   unfold m1_pow. simpl. apply Zmod_1_l. destruct p_prime; lia.
 Qed.
+(* This lemma should be proved easily. But it's not. *)
 Let P10 :
   (product Z mlt mlt_comm mlt_assoc 1 _ R_finite (fun u => q)) mod p =
     (q ^ ((p - 1) / 2)) mod p.
@@ -1272,6 +1274,7 @@ Proof.
   destruct Hx'' as [Hx''1 Hx''2]. rewrite Hx''2. auto.
   rewrite Zmult_mod. destruct Hx'' as [Hx''1 Hx''2]. rewrite Hx''2. rewrite Zmult_0_r. auto.
 Qed.
+(* EL := sum_{u = 1}^{(p-1)/2} (q * u) / p *)
 Definition EL := (product Z Zplus Zplus_comm Zplus_assoc 0 _ U_finite (fun u => (q * `u) / p)).
 Lemma EL1 :
   0 <= EL.

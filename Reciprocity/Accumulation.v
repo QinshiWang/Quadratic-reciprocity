@@ -75,6 +75,10 @@ Lemma pr_ex2 (n : nat) (n' : nat) (Heq : n = S n') :
 Proof.
   rewrite Heq. apply lt_n_Sn.
 Qed.
+
+
+(* Compute the product of n elements. *)
+(* The usage of Fin is verbose. I believe there are better ways of using dependent type. *)
 Fixpoint pr (n : nat) (f : Fints n -> T) :=
   match n as n' return n = n' -> T with
     | O => fun _ => e
